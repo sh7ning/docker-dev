@@ -2,9 +2,8 @@ FROM daocloud.io/php:7.1-fpm
 
 # 说明:
 # port: 9000
-# www:  /var/www/html
+# www:  /www # /var/www/html
 # conf: /usr/local/etc/php
-# docker run --name php-container -p 9000:9000 -v /Users/develop/workspace/demo/dockerwww:/var/www/html -d docker-php
 
 # 换源
 RUN curl -o /etc/apt/sources.list http://mirrors.163.com/.help/sources.list.jessie \
