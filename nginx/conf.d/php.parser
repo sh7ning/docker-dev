@@ -18,11 +18,7 @@ client_max_body_size 128M;
 
 location / {
     index   index.php;
-    try_files $uri /index.php?$query_string;
-    # 如果找不到真实存在的文件，把请求分发至 index.php
-    # try_files $uri $uri/ /index.php?$query_string;
-    # 把请求分发至 index.php，这种可以让pathinfo正常获取
-    # try_files  $uri  /index.php$uri;
+    try_files $uri $uri/ /index.php?$query_string;
 }
 
 # 若取消下面这段的注释，可避免接管不存在文件的处理过程（404）
