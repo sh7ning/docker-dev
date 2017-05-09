@@ -1,4 +1,4 @@
-FROM daocloud.io/nginx:1.11
+FROM nginx:1.11
 
 # 说明:
 # www:  /www

@@ -1,4 +1,4 @@
-FROM daocloud.io/php:7.1-fpm
+FROM php:7.1-fpm
 
 # 说明:
 # port: 9000
@@ -30,8 +30,6 @@ RUN curl -o /etc/apt/sources.list http://mirrors.163.com/.help/sources.list.jess
 
 # 安装composer
 # docker run --rm -it  -v $(pwd):/app docker-composer
-# ADD https://getcomposer.org/composer.phar /usr/local/bin/composer
-# RUN chmod +x /usr/local/bin/composer
 
 # 共享目录给nginx
 VOLUME /www
