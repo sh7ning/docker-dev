@@ -28,9 +28,6 @@ RUN curl -o /etc/apt/sources.list http://mirrors.163.com/.help/sources.list.jess
         && docker-php-ext-install pdo_pgsql \
         && docker-php-ext-install gettext
 
-# 安装composer
-# docker run --rm -it  -v $(pwd):/app docker-composer
-
 # 共享目录给nginx
 VOLUME /www
 

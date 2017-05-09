@@ -8,6 +8,12 @@
 docker build -t docker-php ./php
 ```
 
+* Install Composer
+
+```
+docker build -t docker-composer ./composer
+```
+
 * Install Nginx
 
 ```
@@ -24,7 +30,7 @@ docker build -t docker-redis ./redis
 
 ###  Usage
 
-* create docker network
+* Create docker network
 
 ```
 docker network create phpnetwork
@@ -34,6 +40,12 @@ docker network create phpnetwork
 
 ```
 docker run --name container-php --net=phpnetwork -v your-www-dir:/www -d docker-php
+```
+
+* Composer
+
+```
+alias composer='docker run --rm -it -v $(pwd):/app docker-composer '
 ```
 
 * Run Nginx
