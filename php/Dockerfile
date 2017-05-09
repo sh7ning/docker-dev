@@ -14,6 +14,8 @@ FROM daocloud.io/php:7.1-fpm
 # pdo_pgsql
 # gd
 
+# 其他可能需要安装扩展 apcu sockets streams pcntl posix libevent exif bcmath zip
+
 RUN curl -o /etc/apt/sources.list http://mirrors.163.com/.help/sources.list.jessie \
         && apt-get update \
         && apt-get install -y libmcrypt-dev \
