@@ -1,4 +1,4 @@
-FROM redis:3.2
+FROM daocloud.io/redis:3.2
 
 # 说明:
 # port: 6379
