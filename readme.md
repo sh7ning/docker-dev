@@ -26,6 +26,12 @@ docker build -t docker-nginx ./nginx
 docker build -t docker-redis ./redis
 ```
 
+* Install PostgreSQL
+
+```
+docker build -t docker-postgres ./postgres
+```
+
 
 
 ###  Usage
@@ -57,6 +63,12 @@ docker run --restart=always -d -v /etc/localtime:/etc/localtime:ro --net=phpnetw
 * Run Redis
 
 ```
-docker run --restart=always -d --name container-redis -p 6379:6379 docker-redis
+docker run --restart=always -d -v /etc/localtime:/etc/localtime:ro --net=phpnetwork --name container-redis -p 6379:6379 docker-redis
+```
+
+* Run PostgreSQL
+
+```
+docker run --restart=always -d -v /etc/localtime:/etc/localtime:ro --net=phpnetwork --name container-postgres -e POSTGRES_PASSWORD=xxoo -v your-pgdata:/var/lib/postgresql/data -p 5432:5432 docker-postgres
 ```
 
