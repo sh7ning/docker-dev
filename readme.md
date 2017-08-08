@@ -32,21 +32,7 @@ docker build -t docker-redis ./redis
 docker build -t docker-postgres ./postgres
 ```
 
-
-
 ###  Usage
-
-* Create docker network
-
-```
-docker network create phpnetwork
-```
-
-* Run PHP
-
-```
-docker run --restart=always -d -v /etc/localtime:/etc/localtime:ro --net=phpnetwork --name container-php -v your-www-dir:/www -v your-php-conf:/usr/local/etc/php:ro docker-php
-```
 
 * Composer
 
@@ -54,21 +40,8 @@ docker run --restart=always -d -v /etc/localtime:/etc/localtime:ro --net=phpnetw
 alias composer='docker run --rm -it -v $(pwd):/app docker-composer '
 ```
 
-* Run Nginx
+* Let's Encrypt
 
 ```
-docker run --restart=always -d -v /etc/localtime:/etc/localtime:ro --net=phpnetwork --name container-nginx -v your-www-dir:/www -v your-nginx-config-dir:/etc/nginx/conf.d:ro -p 80:80 -p 443:443 docker-nginx
+docker run -it --rm --name certbot -v "/data/site/config/nginx/conf.d/certs:/etc/letsencrypt" -p 443:443 -p 80:80 certbot/certbot certonly
 ```
-
-* Run Redis
-
-```
-docker run --restart=always -d -v /etc/localtime:/etc/localtime:ro --net=phpnetwork --name container-redis -p 6379:6379 docker-redis
-```
-
-* Run PostgreSQL
-
-```
-docker run --restart=always -d -v /etc/localtime:/etc/localtime:ro --net=phpnetwork --name container-postgres -e POSTGRES_PASSWORD=xxoo -v your-pgdata:/var/lib/postgresql/data -p 5432:5432 docker-postgres
-```
-

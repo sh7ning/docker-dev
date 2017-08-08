@@ -1,0 +1,55 @@
+version: "3"
+
+services:
+    php:
+        image: docker-php
+        container_name: container-php
+        restart: always
+        networks:
+            - phpnetwork
+        volumes:
+            - /etc/localtime:/etc/localtime:ro
+            - /Users/sh7ne/workspace/site:/www
+            - /Users/sh7ne/workspace/docker/container/php:/usr/local/etc/php:ro
+    nginx:
+        image: docker-nginx
+        restart: always
+        ports:
+            - 80:80
+        networks:
+            - phpnetwork
+        volumes:
+            - /etc/localtime:/etc/localtime:ro
+            - /Users/sh7ne/workspace/site:/www:ro 
+            - /Users/sh7ne/workspace/docker/container/nginx/conf.d:/etc/nginx/conf.d:ro
+        depends_on:
+            - php
+
+    # postgres
+    postgres:
+        image: postgres:9.6
+        restart: always
+        ports:
+            - 5432:5432
+        environment:
+            - POSTGRES_PASSWORD=xxoo
+        volumes:
+            - /etc/localtime:/etc/localtime:ro
+            - /Users/sh7ne/workspace/docker/container/postgres/data:/var/lib/postgresql/data
+
+    # 说明:
+    # port: 6379
+    # conf: /usr/local/etc/redis/redis.conf
+    redis:
+        image: redis:3.2
+        container_name: container-redis
+        restart: always
+        networks:
+            - phpnetwork
+        volumes:
+            - /etc/localtime:/etc/localtime:ro
+
+networks:
+    phpnetwork:
+       # external:
+       #      name: phpnetwork
