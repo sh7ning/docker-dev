@@ -20,18 +20,6 @@ docker build -t docker-composer ./composer
 docker build -t docker-nginx ./nginx
 ```
 
-* Install Redis
-
-```
-docker build -t docker-redis ./redis
-```
-
-* Install PostgreSQL
-
-```
-docker build -t docker-postgres ./postgres
-```
-
 ###  Usage
 
 * Composer
