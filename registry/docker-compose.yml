@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+    registry:
+        image: registry:2.6
+        restart: always
+        container_name: container-docker-registry
+        ports:
+            - 5000:5000
+        environment:
+            - REGISTRY_HTTP_ADDR=0.0.0.0:5000
+            - REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt
+            - REGISTRY_HTTP_TLS_KEY=/certs/domain.key
+            - REGISTRY_AUTH=htpasswd
+            - "REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm"
+            - REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd
+        volumes:
+            - /data/docker/registry/storage:/var/lib/registry
+            - /data/docker/registry/auth:/auth
+            - /data/docker/registry/certs:/certs:ro
+        networks:
+            - phpnetwork
+
+networks:
+    phpnetwork:
+        external:
+            name: phpnetwork
