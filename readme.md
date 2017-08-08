@@ -22,6 +22,12 @@ docker build -t docker-nginx ./nginx
 
 ###  Usage
 
+* run
+
+```
+docker-compose up -d
+```
+
 * Composer
 
 ```
