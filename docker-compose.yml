@@ -36,6 +36,7 @@ services:
         networks:
             - phpnetwork
         environment:
+            - POSTGRES_USER=postgres
             - POSTGRES_PASSWORD=xxoo
         volumes:
             - /etc/localtime:/etc/localtime:ro
