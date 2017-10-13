@@ -28,7 +28,7 @@ RUN curl -o /etc/apt/sources.list http://mirrors.163.com/.help/sources.list.jess
         && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
         && docker-php-ext-install -j$(nproc) gd \
         && docker-php-ext-install -j$(nproc) mcrypt \
-        && docker-php-ext-install pdo_mysql pdo_pgsql gettext opcache \
+        && docker-php-ext-install pdo_mysql pdo_pgsql gettext zip opcache \
         && cd /opt/php-profiler-extension && phpize && ./configure && make && make install && docker-php-ext-enable tideways && rm -rf /opt/php-profiler-extension \
         && sed -i 's#pm = dynamic#pm = static#' /usr/local/etc/php-fpm.d/www.conf \
         && sed -i 's#pm.max_children = 5#pm.max_children = 20#' /usr/local/etc/php-fpm.d/www.conf \
