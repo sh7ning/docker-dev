@@ -5,20 +5,17 @@ services:
         image: docker-php
         container_name: container-php
         restart: always
-        networks:
-            - phpnetwork
         volumes:
             - /etc/localtime:/etc/localtime:ro
             - /Users/sh7ne/workspace/site:/www
             - ./runtime/php/php:/usr/local/etc/php:ro
             - ./runtime/php/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf:ro
     nginx:
-        image: docker-nginx
+        image: nginx:1.11
         restart: always
         ports:
             - 80:80
-        networks:
-            - phpnetwork
+            - 443:443
         volumes:
             - /etc/localtime:/etc/localtime:ro
             - /Users/sh7ne/workspace/site:/www:ro 
@@ -33,8 +30,6 @@ services:
         restart: always
         ports:
             - 5432:5432
-        networks:
-            - phpnetwork
         environment:
             - POSTGRES_USER=postgres
             - POSTGRES_PASSWORD=xxoo
@@ -51,12 +46,5 @@ services:
         restart: always
         ports:
             - 6379:6379
-        networks:
-            - phpnetwork
         volumes:
             - /etc/localtime:/etc/localtime:ro
-
-networks:
-    phpnetwork:
-       # external:
-       #      name: phpnetwork
