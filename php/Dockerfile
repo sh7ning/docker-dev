@@ -34,4 +34,7 @@ RUN curl -o /etc/apt/sources.list http://mirrors.163.com/.help/sources.list.jess
         && sed -i 's#pm.max_children = 5#pm.max_children = 20#' /usr/local/etc/php-fpm.d/www.conf \
         && sed -i 's#;pm.max_requests = 500#pm.max_requests = 500#' /usr/local/etc/php-fpm.d/www.conf
 
-WORKDIR /var/www
+# 共享目录给nginx
+VOLUME /www
+
+WORKDIR /www
