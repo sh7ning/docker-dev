@@ -7,7 +7,12 @@
 * Install PHP
 
 ```
-docker build -t docker-php ./php
+docker build -t docker-php -f ./php/Dockerfile .
+```
+
+* Install beanstalkd
+```
+docker build -t docker-beanstalkd ./beanstalkd
 ```
 
 ###  Usage
