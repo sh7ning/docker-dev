@@ -10,8 +10,6 @@
 # root    /Users/develop/workspace/domain/$subdomain/public;
 
 # 使用该配置时，你还应该在 php.ini 文件中设置 cgi.fix_pathinfo=0 ，能避免掉很多不必要的 stat() 系统调用。
-charset utf-8;
-client_max_body_size 128M;
 
 # access_log  /path/to/basic/log/access.log;
 # error_log   /path/to/basic/log/error.log;
@@ -30,20 +28,15 @@ location / {
 
 # location ~ \.php$ 
 location ~ [^/]\.php(/|$) {
-    fastcgi_index  index.php;
-
     #设置PATH_INFO，注意fastcgi_split_path_info已经自动改写了fastcgi_script_name变量，  
     #后面不需要再改写SCRIPT_FILENAME,SCRIPT_NAME环境变量，所以必须在加载fastcgi.conf之前设置
     fastcgi_split_path_info ^(.+\.php)(.*)$;
     fastcgi_param PATH_INFO $fastcgi_path_info;
-    # $_SERVER['SH7NE_ENV'] || getenv('SH7NE_ENV') 来获取
-    fastcgi_param SH7NE_ENV testing;
 
     fastcgi_param  SCRIPT_FILENAME    $document_root$fastcgi_script_name;
     include fastcgi_params;
     fastcgi_intercept_errors on;
     fastcgi_pass container-php:9000;
-    # try_files $uri =404;
 }
 
 location ~ /\.(ht|svn|git) {

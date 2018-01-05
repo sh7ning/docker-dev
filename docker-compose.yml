@@ -7,7 +7,7 @@ services:
         restart: always
         volumes:
             - /etc/localtime:/etc/localtime:ro
-            - /Users/sh7ne/workspace/site:/www
+            - ${SITE_DIR}:/www
             - ./runtime/php/php:/usr/local/etc/php:ro
             - ./runtime/php/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf:ro
     nginx:
@@ -18,11 +18,16 @@ services:
             - 443:443
         volumes:
             - /etc/localtime:/etc/localtime:ro
-            - /Users/sh7ne/workspace/site:/www:ro 
-            - ./runtime/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-            - ./runtime/nginx/conf.d:/etc/nginx/conf.d:ro
+            - ${SITE_DIR}:/www
+            - ${NGINX_CONF}/nginx.conf:/etc/nginx/nginx.conf:ro
+            - ${NGINX_CONF}/conf.d:/etc/nginx/conf.d:ro
         depends_on:
             - php
+        # logging:
+        #     driver: 'fluentd'
+        #     options:
+        #         fluentd-address: '${LOG_IP}:${FLUENTD_PORT}'
+        #         tag: 'nginx-development'
 
     # postgres
     postgres:

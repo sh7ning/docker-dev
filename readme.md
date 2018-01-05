@@ -10,18 +10,6 @@
 docker build -t docker-php ./php
 ```
 
-* Install Composer
-
-```
-docker build -t docker-composer ./composer
-```
-
-* Install Nginx
-
-```
-docker build -t docker-nginx ./nginx
-```
-
 ###  Usage
 
 * run

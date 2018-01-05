@@ -11,7 +11,7 @@ services:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     volumes:
       - ../runtime/elasticsearch/data:/usr/share/elasticsearch/data
-	  # /usr/share/elasticsearch/config 配置
+# /usr/share/elasticsearch/config 配置
     ports:
       - 9200:9200
-	  # 9300
+# 9300
