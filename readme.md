@@ -52,5 +52,7 @@ alias composer='docker run --rm -it -v $(pwd):/app -v $HOME/.composer-php:/compo
 * Let's Encrypt
 
 ```
-docker run -it --rm --name certbot -v "/data/site/config/nginx/conf.d/certs:/etc/letsencrypt" -p 443:443 -p 80:80 certbot/certbot certonly
+docker run -it --rm --name certbot -v "/data/docker-dev/runtime/nginx/conf.d/certs:/etc/letsencrypt" -p 443:443 -p 80:80 certbot/certbot certonly
+# 下边无效
+docker run -it --rm --name certbot -v "/data/site/config/nginx/conf.d/certs:/etc/letsencrypt" -v "/data/site/www/paotu.cc/www:/www" -v "/tmp/letsencrypt:/var/log/letsencrypt" certbot/certbot certonly --webroot -w /www -d www.paotu.cc
 ```
