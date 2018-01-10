@@ -2,6 +2,24 @@
 
 > [docker note](https://gist.github.com/sh7ning/6ade02eeb0cd719f90ae09499c8263e7)
 
+### configuration
+
+* `vi /etc/docker/daemon.json`
+
+```
+{
+    "userns-remap"      : "default",
+    "registry-mirrors"  : ["???.aliyuncs.com"]
+}
+```
+
+* restart 
+
+```
+systemctl daemon-reload
+systemctl restart docker
+```
+
 ### Installation
 
 * Install PHP
