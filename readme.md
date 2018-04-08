@@ -48,12 +48,3 @@ alias composer='docker run --rm -it -v $(pwd):/app -v $HOME/.composer-php:/tmp c
 # 以下为非官方的版本
 alias composer='docker run --rm -it -v $(pwd):/app -v $HOME/.composer-php:/composer composer/composer:1.1 '
 ```
-
-* Let's Encrypt
-
-```
-# 执行命令，重启 nginx
-docker run -it --rm --name certbot -v "/data/docker-dev/runtime/nginx/conf.d/certs:/etc/letsencrypt" -v "/data/site/www:/www" -v "/tmp/letsencrypt:/var/log/letsencrypt" certbot/certbot certonly --webroot -w /www/yadou.net/www -d www.domain.net
-# 不建议下边的方式，需要先重启 nginx ，然后执行，然后 启动
-docker run -it --rm --name certbot -v "/data/docker-dev/runtime/nginx/conf.d/certs:/etc/letsencrypt" -p 443:443 -p 80:80 certbot/certbot certonly
-```
