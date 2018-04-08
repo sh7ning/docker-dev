@@ -19,6 +19,7 @@ services:
         volumes:
             - /etc/localtime:/etc/localtime:ro
             - ${SITE_DIR}:/www
+            - ${NGINX_CONF}/.well-known:/www/.well-known
             - ${NGINX_CONF}/nginx.conf:/etc/nginx/nginx.conf:ro
             - ${NGINX_CONF}/conf.d:/etc/nginx/conf.d:ro
         depends_on:
