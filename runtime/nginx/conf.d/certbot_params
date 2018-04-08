@@ -1,0 +1,5 @@
+# let's encrypt
+# location /.well-known/acme-challenge {
+location /.well-known {
+    alias /www/.well-known/;
+}

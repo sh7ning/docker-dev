@@ -1,0 +1,7 @@
+#!/bin/bash
+
+docker run -it --rm \
+           -v "/data/docker-dev/runtime/nginx/conf.d/certs:/etc/letsencrypt" \
+           -v "/data/site/www:/www" \
+           -v "/tmp/letsencrypt:/var/log/letsencrypt" \
+           certbot/certbot renew --force-renew
