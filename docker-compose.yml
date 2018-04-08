@@ -2,14 +2,14 @@ version: "3"
 
 services:
     php:
-        image: php-2017
+        image: docker-php
         container_name: container-php
         restart: always
         volumes:
             - /etc/localtime:/etc/localtime:ro
             - ${SITE_DIR}:/www
-            # - ./runtime/php/php:/usr/local/etc/php:ro
-            # - ./runtime/php/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf:ro
+            - ./runtime/php/php:/usr/local/etc/php:ro
+            - ./runtime/php/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf:ro
     nginx:
         image: nginx:1.11
         restart: always
@@ -19,10 +19,8 @@ services:
         volumes:
             - /etc/localtime:/etc/localtime:ro
             - ${SITE_DIR}:/www
-            - ${NGINX_CONF}/.well-known:/www/.well-known
             - ${NGINX_CONF}/nginx.conf:/etc/nginx/nginx.conf:ro
             - ${NGINX_CONF}/conf.d:/etc/nginx/conf.d:ro
-            - ./runtime/nginx-logs:/var/log/nginx
         depends_on:
             - php
         # logging:
@@ -32,26 +30,26 @@ services:
         #         tag: 'nginx-development'
 
     # postgres
-    # postgres:
-    #     image: postgres:9.6
-    #     restart: always
-    #     ports:
-    #         - 5432:5432
-    #     environment:
-    #         - POSTGRES_USER=postgres
-    #         - POSTGRES_PASSWORD=xxoo
-    #     volumes:
-    #         - /etc/localtime:/etc/localtime:ro
-    #         - ./runtime/postgres/data:/var/lib/postgresql/data
+    postgres:
+        image: postgres:9.6
+        restart: always
+        ports:
+            - 5432:5432
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=xxoo
+        volumes:
+            - /etc/localtime:/etc/localtime:ro
+            - ./runtime/postgres/data:/var/lib/postgresql/data
 
     # 说明:
     # port: 6379
     # conf: /usr/local/etc/redis/redis.conf
-    # redis:
-    #     image: redis:3.2
-    #     container_name: container-redis
-    #     restart: always
-    #     ports:
-    #         - 6379:6379
-    #     volumes:
-    #         - /etc/localtime:/etc/localtime:ro
+    redis:
+        image: redis:3.2
+        container_name: container-redis
+        restart: always
+        ports:
+            - 6379:6379
+        volumes:
+            - /etc/localtime:/etc/localtime:ro
