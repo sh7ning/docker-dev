@@ -43,6 +43,18 @@ services:
             - /etc/localtime:/etc/localtime:ro
             - ./runtime/postgres/data:/var/lib/postgresql/data
 
+    # mysql
+    mysql:
+        image: mysql:5.7
+        restart: always
+        ports:
+            - 3306:3306
+        volumes:
+            - ./runtime/mysql/data:/var/lib/mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD=123456
+            - TZ=Asia/Chongqing
+
     # 说明:
     # port: 6379
     # conf: /usr/local/etc/redis/redis.conf
