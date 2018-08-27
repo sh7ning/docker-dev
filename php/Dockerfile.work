@@ -7,7 +7,7 @@ ENV COMPOSER_HOME /composer
 # git clone https://github.com/tideways/php-profiler-extension.git
 COPY php-profiler-extension /opt/php-profiler-extension
  
-RUN apt-get update && apt-get install -y git && docker-php-ext-install zip \
+RUN apt-get update && apt-get install -y git \
         && curl -O https://getcomposer.org/composer.phar \
         && chmod +x composer.phar \
         && mv composer.phar /usr/bin/composer \
