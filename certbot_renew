@@ -1,6 +1,8 @@
 #!/bin/bash
 
-docker run -it --rm \
+# docker run -it --rm \
+# 下边为crontab版本
+docker run --rm \
            -v "/data/docker-dev/runtime/nginx/conf.d/certs:/etc/letsencrypt" \
            -v "/data/site/www:/www" \
            -v "/tmp/letsencrypt:/var/log/letsencrypt" \
