@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+    etcd-01:
+        container_name: container-etcd
+        image: quay.io/coreos/etcd:v3.3.1
+        environment:
+            - ETCDCTL_API=3
+        volumes:
+            - ./runtime/etcd-01:/etcd-data
+        command:  >-
+            /usr/local/bin/etcd
+            --data-dir=/etcd-data
+            -name etcd-01
+            -advertise-client-urls http://container-etcd:2379
+            -listen-client-urls http://0.0.0.0:2379
+            -initial-advertise-peer-urls http://container-etcd:2380
+            -listen-peer-urls http://0.0.0.0:2380
+            -initial-cluster etcd-01=http://container-etcd:2380
+
