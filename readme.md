@@ -54,3 +54,4 @@ alias composer='docker run --rm -it -v $(pwd):/app -v $HOME/.composer-php:/tmp c
 # 以下为非官方的版本
 alias composer='docker run --rm -it -v $(pwd):/app -v $HOME/.composer-php:/composer composer/composer:1.1 '
 ```
+
