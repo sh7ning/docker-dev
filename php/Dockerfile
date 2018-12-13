@@ -39,8 +39,9 @@ RUN curl -o /usr/bin/composer https://dl.laravel-china.org/composer.phar \
 # RUN usermod -u 1000 www-data
 
 # Swoole
-# RUN apt-get install -y libpcre3 libpcre3-dev libssl-dev
-# RUN pecl install swoole && docker-php-ext-enable swoole
+# RUN apt-get install -y libpcre3 libpcre3-dev libssl-dev \
+#     && docker-php-ext-install pcntl \
+#     && pecl install swoole && docker-php-ext-enable swoole
 
 VOLUME /www
 
