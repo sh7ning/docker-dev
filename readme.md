@@ -26,6 +26,12 @@ systemctl daemon-reload
 systemctl restart docker
 ```
 
+* crontab
+
+```
+0 0 1 * * date >> /tmp/certbot_renew.log && /data/docker-dev/certbot_renew 2>&1 >> /tmp/certbot_renew.log && docker-compose -f /data/docker-dev/docker-compose.yml restart nginx 2>&1 >> /tmp/certbot_renew.log
+```
+
 ### Installation
 
 * Install PHP
