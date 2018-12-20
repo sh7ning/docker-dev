@@ -15,10 +15,10 @@ RUN apt-get update \
         && apt-get install -y libpq-dev && docker-php-ext-install pdo_pgsql \
         && pecl update-channels \
         && printf "\n" | pecl install -o -f redis && docker-php-ext-enable redis \
-        && docker-php-ext-install pdo_mysql opcache \
+        && docker-php-ext-install pdo_mysql \
         && apt-get install -y libzip-dev && docker-php-ext-configure zip --with-libzip && docker-php-ext-install zip
 
-# docker-php-ext-install mysqli
+# docker-php-ext-install opcache mysqli
 # gmp bcmath
 
 # composer
