@@ -1,7 +1,10 @@
 version: '3'
 services:
-  elasticsearch:
-    image: elasticsearch:6.5.4
+  es:
+    image: es-img
+    build:
+        context: ./
+        dockerfile: Dockerfile
     restart: always
     environment:
       - cluster.name=test-name
