@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+    postgres:
+        image: postgres:9.6
+        restart: always
+        ports:
+            - 127.0.0.1:5432:5432
+        environment:
+            - POSTGRES_USER=${POSTGRES_USER}
+            - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+        volumes:
+            - ../runtime/postgres/data:/var/lib/postgresql/data
