@@ -14,8 +14,8 @@ RUN apt-get update \
         && docker-php-ext-install gd \
         && apt-get install -y libpq-dev && docker-php-ext-install pdo_pgsql \
         && pecl update-channels \
-        && printf "\n" | pecl install -o -f redis && docker-php-ext-enable redis \
-        && docker-php-ext-install pdo_mysql \
+        && pecl install redis && docker-php-ext-enable redis \
+        && docker-php-ext-install pdo_mysql pcntl \
         && apt-get install -y libzip-dev && docker-php-ext-configure zip --with-libzip && docker-php-ext-install zip
 
 # docker-php-ext-install opcache mysqli
@@ -40,7 +40,6 @@ RUN curl -o /usr/bin/composer https://dl.laravel-china.org/composer.phar \
 
 # Swoole
 # RUN apt-get install -y libpcre3 libpcre3-dev libssl-dev \
-#     && docker-php-ext-install pcntl \
 #     && pecl install swoole && docker-php-ext-enable swoole
 
 VOLUME /www

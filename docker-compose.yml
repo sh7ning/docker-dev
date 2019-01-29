@@ -2,7 +2,10 @@ version: "3"
 
 services:
     php:
-        image: docker-php
+        image: php-swoole
+        build:
+            context: ./php/
+            dockerfile: Dockerfile
         container_name: container-php
         restart: always
         environment:

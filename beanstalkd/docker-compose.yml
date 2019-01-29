@@ -3,9 +3,11 @@ version: "3"
 services:
     beanstalkd:
         image: docker-beanstalkd
+        build:
+            context: ./
+            dockerfile: Dockerfile
         restart: always
         ports:
             - 11300:11300
         volumes:
-            - /etc/localtime:/etc/localtime:ro
             - ../runtime/beanstalkd:/var/lib/beanstalkd
