@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+    filebeat:
+        image: docker.elastic.co/beats/filebeat:6.5.4
+        hostname: jetea-filebeat
+        restart: always
+        volumes:
+            - ./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+            - /Users/shine/workspace/www/demo/lumen/storage/logs/:/logs/lumen/:ro

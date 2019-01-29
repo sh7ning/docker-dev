@@ -1,0 +1,20 @@
+name: jetea
+
+filebeat.inputs:
+    - type: log
+      enabled: true
+      paths:
+          - /logs/lumen/*.log
+      encoding: utf-8
+      scan_frequency: 5s
+      tags: ["filebeat", "lumen_log", "jetea_app"]
+      multiline.pattern: ^\[\d{4}
+      multiline.negate: true
+      multiline.match: after
+      tail_files: true #文件末尾开始读取
+
+output.logstash:
+    enabled: true
+    hosts: ["192.168.3.92:5044"]
+    compression_level: 3
+
