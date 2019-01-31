@@ -15,7 +15,7 @@
 # error_log   /path/to/basic/log/error.log;
 
 location / {
-    index   index.php;
+    index   index.php index.html;
     try_files $uri $uri/ /index.php?$query_string;
 }
 
