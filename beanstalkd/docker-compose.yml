@@ -11,3 +11,8 @@ services:
             - 11300:11300
         volumes:
             - ../runtime/beanstalkd:/var/lib/beanstalkd
+
+networks:
+    default:
+        external:
+            name: jetea_net

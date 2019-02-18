@@ -11,3 +11,8 @@ services:
             - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
         volumes:
             - ../runtime/postgres/data:/var/lib/postgresql/data
+
+networks:
+    default:
+        external:
+            name: jetea_net

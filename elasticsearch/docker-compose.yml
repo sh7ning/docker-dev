@@ -23,3 +23,8 @@ services:
 
 # 9300
 # /usr/share/elasticsearch/config 配置
+
+networks:
+    default:
+        external:
+            name: jetea_net

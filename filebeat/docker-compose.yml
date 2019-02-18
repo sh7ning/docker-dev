@@ -8,3 +8,8 @@ services:
         volumes:
             - ./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
             - /Users/shine/workspace/www/demo/lumen/storage/logs/:/logs/lumen/:ro
+
+networks:
+    default:
+        external:
+            name: jetea_net

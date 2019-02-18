@@ -3,6 +3,7 @@ version: "3"
 services:
     mysql:
         image: mysql:5.7
+        container_name: mysql
         restart: always
         ports:
             - 127.0.0.1:3306:3306
@@ -11,3 +12,8 @@ services:
         environment:
             - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
             - TZ=Asia/Shanghai
+
+networks:
+    default:
+        external:
+            name: jetea_net

@@ -18,3 +18,7 @@ services:
             -listen-peer-urls http://0.0.0.0:2380
             -initial-cluster etcd-01=http://container-etcd:2380
 
+networks:
+    default:
+        external:
+            name: jetea_net
