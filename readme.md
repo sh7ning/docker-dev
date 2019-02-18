@@ -52,12 +52,3 @@ docker build -t docker-beanstalkd ./beanstalkd
 ```
 docker-compose up -d
 ```
-
-* Composer
-
-```
-alias composer='docker run --rm -it -v $(pwd):/app -v $HOME/.composer-php:/tmp composer '
-# 以下为非官方的版本
-alias composer='docker run --rm -it -v $(pwd):/app -v $HOME/.composer-php:/composer composer/composer:1.1 '
-```
-
