@@ -10,6 +10,7 @@ services:
         restart: always
         environment:
             - TZ=Asia/Shanghai
+            - LC_ALL=C.UTF-8
         volumes:
             - ${SITE_DIR}:/www
     nginx:
