@@ -16,6 +16,7 @@ services:
     # https://docs.influxdata.com/influxdb/v1.7/administration/config/
     influxdb:
         image: influxdb:1.7
+        restart: always
         environment:
             - TZ=Asia/Shanghai
             - INFLUXDB_GRAPHITE_ENABLED=false
