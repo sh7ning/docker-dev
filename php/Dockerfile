@@ -1,5 +1,8 @@
 FROM php:7.2-fpm-stretch
 
+# 设置时区
+ENV TZ=Asia/Shanghai
+
 # debug:
 # docker run --rm -it -e "TERM=xterm-256color" php:7.2-fpm-stretch /bin/bash
 

@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+    grafana:
+        image: grafana/grafana:5.4.3
+        restart: always
+        ports:
+            - 127.0.0.1:3000:3000
+        environment:
+            - TZ=Asia/Shanghai
+            - GF_SECURITY_ADMIN_USER=root
+            - GF_SECURITY_ADMIN_PASSWORD=123123
+        volumes:
+            - ../runtime/grafana/data:/var/lib/grafana
+
+    # https://docs.influxdata.com/influxdb/v1.7/administration/config/
+    influxdb:
+        image: influxdb:1.7
+        environment:
+            - TZ=Asia/Shanghai
+            - INFLUXDB_GRAPHITE_ENABLED=false
+            - INFLUXDB_DATA_MAX_SERIES_PER_DATABASE=0
+            - INFLUXDB_DATA_MAX_VALUES_PER_TAG=0
+            - INFLUXDB_HTTP_MAX_BODY_SIZE=0
+        ports:
+            - "127.0.0.1:8086:8086" # HTTP API port
+        volumes:
+            - ../runtime/influxdb/data:/var/lib/influxdb
+
+networks:
+    default:
+        external:
+            name: jetea_net
