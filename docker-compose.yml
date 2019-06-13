@@ -39,7 +39,7 @@ services:
     # port: 6379
     # conf: /usr/local/etc/redis/redis.conf
     redis:
-        image: redis:3.2
+        image: redis:4.0-stretch
         container_name: container-redis
         restart: always
         ports:
