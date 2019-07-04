@@ -28,15 +28,10 @@ RUN apt-get update \
 ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_HOME /composer
 
-RUN curl -o /usr/bin/composer https://dl.laravel-china.org/composer.phar \
+RUN curl -o /usr/bin/composer https://getcomposer.org/composer.phar \ 
         && chmod +x /usr/bin/composer && sync \
-        && composer config -g repo.packagist composer https://packagist.laravel-china.org \
+        && composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/ \
         && apt-get install -y git zip
-# RUN curl -O https://getcomposer.org/composer.phar \ 
-#         && chmod +x composer.phar && sync \
-#         && mv composer.phar /usr/bin/composer \
-#         && composer config -g repo.packagist composer https://packagist.laravel-china.org \
-#         && apt-get install -y git zip
         
 # Write Permission
 # RUN usermod -u 1000 www-data
