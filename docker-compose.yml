@@ -29,19 +29,13 @@ services:
             - ./nginx/conf.d:/etc/nginx/conf.d:ro
         depends_on:
             - php
-        # logging:
-        #     driver: 'fluentd'
-        #     options:
-        #         fluentd-address: '${LOG_IP}:${FLUENTD_PORT}'
-        #         tag: 'nginx-development'
 
-    # 说明:
-    # port: 6379
-    # conf: /usr/local/etc/redis/redis.conf
     redis:
         image: redis:4.0-stretch
         container_name: container-redis
         restart: always
+        volumes:
+            - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
         ports:
             - "127.0.0.1:6379:6379"
 
