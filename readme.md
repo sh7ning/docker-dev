@@ -29,7 +29,7 @@ systemctl restart docker
 * crontab
 
 ```
-0 0 1 * * /data/docker-dev/certbot_renew 2>&1 >> /tmp/certbot_renew.log
+0 0 1 * * /data/docker-dev/certbot_renew >> /tmp/certbot_renew.log 2>&1
 ```
 
 ### Installation
