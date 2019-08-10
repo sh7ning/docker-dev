@@ -2,7 +2,7 @@ version: "3"
 
 services:
     php:
-        image: php-swoole
+        image: docker-php
         build:
             context: ./php/
             dockerfile: Dockerfile
