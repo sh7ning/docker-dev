@@ -105,3 +105,35 @@ server {
        return 301 https://$host$request_uri;
    }
 }
+
+# 静态文件服务器
+server {
+    listen 80;
+    server_name cdn.demostatic.com;
+    root /www/demostatic/cdn;
+    error_page   404 403 500 502 503 504   /404.jpg;
+    location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$ {
+        expires      30d;
+    }
+
+    location ~ .*\.(js|css)?$ {
+        expires      12h;
+    }
+}
+
+# 用户上传文件服务器
+server {
+    listen 80;
+    server_name upload.demostatic.com;
+    root /www/demostatic/upload;
+    error_page   404 403 500 502 503 504   /404.jpg;
+    location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$ {
+        valid_referers none blocked *.demo.com localhost;
+        # 防盗链
+        if ($invalid_referer) {
+            rewrite ^/ http://upload.demostatic.com/404.jpg;
+            return 404;
+        }
+        expires      30d;
+    }
+}
