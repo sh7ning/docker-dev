@@ -11,3 +11,5 @@ echo 刷新证书 开始执行,时间: $(date +"%Y年%m月%d日 %H时%M分%S秒"
            certbot/certbot renew --force-renew
 
 /usr/local/bin/docker-compose -f /data/docker-dev/docker-compose.yml restart nginx
+
+echo 刷新证书完成
