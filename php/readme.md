@@ -17,6 +17,9 @@
 # post_max_size = 12M
 ```
 
+## todo
+开启 opcache
+
 ## xhprof
 
 1. git clone https://github.com/tideways/php-profiler-extension.git
