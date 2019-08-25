@@ -17,8 +17,15 @@
 # post_max_size = 12M
 ```
 
-## todo
-开启 opcache
+## opcache
+```
+[opcache]
+opcache.enable=1
+opcache.memory_consumption=128
+opcache.validate_timestamps=1
+opcache.revalidate_freq=2
+;opcache.save_comments=0
+```
 
 ## xhprof
 
