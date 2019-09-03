@@ -8,41 +8,10 @@
 docker network create jetea_net
 ```
 
-### configuration
-
-* `vi /etc/docker/daemon.json`
-
-```
-{
-    "userns-remap"      : "default",
-    "registry-mirrors"  : ["???.aliyuncs.com"]
-}
-```
-
-* restart 
-
-```
-systemctl daemon-reload
-systemctl restart docker
-```
-
 * crontab
 
 ```
-0 0 1 * * /data/docker-dev/certbot_renew 2>&1 >> /tmp/certbot_renew.log
-```
-
-### Installation
-
-* Install PHP
-
-```
-docker build -t docker-php -f ./php/Dockerfile .
-```
-
-* Install beanstalkd
-```
-docker build -t docker-beanstalkd ./beanstalkd
+0 0 1 * * /data/docker-dev/certbot_renew >> /tmp/certbot_renew.log 2>&1
 ```
 
 ###  Usage

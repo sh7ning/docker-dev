@@ -38,7 +38,7 @@ RUN curl -o /usr/bin/composer https://getcomposer.org/composer.phar \
 
 # Swoole
 # RUN apt-get install -y libpcre3 libpcre3-dev libssl-dev \
-#     && pecl install swoole && docker-php-ext-enable swoole
+#     && yes | pecl install swoole && docker-php-ext-enable swoole
 
 VOLUME /www
 

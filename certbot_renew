@@ -4,10 +4,12 @@
 # 下边为crontab版本
 echo 刷新证书 开始执行,时间: $(date +"%Y年%m月%d日 %H时%M分%S秒")
 
-docker run --rm \
+/usr/bin/docker run --rm \
            -v "/data/docker-dev/runtime/nginx/conf.d/certs:/etc/letsencrypt" \
            -v "/data/site/www:/www" \
            -v "/tmp/letsencrypt:/var/log/letsencrypt" \
            certbot/certbot renew --force-renew
 
-docker-compose -f /data/docker-dev/docker-compose.yml restart nginx
+/usr/local/bin/docker-compose -f /data/docker-dev/docker-compose.yml restart nginx
+
+echo 刷新证书完成
