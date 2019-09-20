@@ -8,6 +8,7 @@ services:
         ports:
             - 127.0.0.1:3000:3000
         environment:
+            - GF_INSTALL_PLUGINS=grafana-piechart-panel,grafana-simple-json-datasource
             - TZ=Asia/Shanghai
             - GF_SECURITY_ADMIN_USER=root
             - GF_SECURITY_ADMIN_PASSWORD=123123
