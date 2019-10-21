@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+    gogs:
+        image: docker-gogs
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        container_name: container-gogs
+        restart: always
+        volumes:
+            - /etc/localtime:/etc/localtime:ro
+            - ./runtime/gogs/data:/data
+            - /data/site/www:/www
+            - ./favicon.ico:/app/gogs/public/img/favicon.png
+
+networks:
+    default:
+        external:
+            name: jetea_net
