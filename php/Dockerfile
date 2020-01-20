@@ -19,10 +19,11 @@ RUN apt-get update \
         && pecl update-channels \
         && pecl install redis && docker-php-ext-enable redis \
         && docker-php-ext-install pdo_mysql pcntl opcache bcmath \
+        && apt-get install -y libgmp3-dev && docker-php-ext-install gmp \
         && apt-get install -y libzip-dev && docker-php-ext-configure zip --with-libzip && docker-php-ext-install zip
 
 # docker-php-ext-install mysqli
-# gmp bcmath
+# bcmath
 
 # composer
 ENV COMPOSER_ALLOW_SUPERUSER 1
