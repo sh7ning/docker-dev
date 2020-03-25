@@ -20,6 +20,8 @@ RUN apt-get update \
         && pecl install redis && docker-php-ext-enable redis \
         && docker-php-ext-install pdo_mysql pcntl opcache bcmath \
         && apt-get install -y libgmp3-dev && docker-php-ext-install gmp \
+        && apt-get install -y libc-client-dev libkrb5-dev && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
+        && docker-php-ext-install imap \
         && apt-get install -y libzip-dev && docker-php-ext-configure zip --with-libzip && docker-php-ext-install zip
 
 # docker-php-ext-install mysqli
