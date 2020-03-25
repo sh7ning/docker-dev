@@ -2,12 +2,13 @@ FROM php:7.2-fpm-stretch
 
 # 设置时区
 ENV TZ=Asia/Shanghai
-
+# 设置语言
+ENV LC_ALL=C.UTF-8
 # debug:
 # docker run --rm -it -e "TERM=xterm-256color" php:7.2-fpm-stretch /bin/bash
 
 # RUN curl -o /etc/apt/sources.list http://mirrors.163.com/.help/sources.list.jessie
-ADD sources.list /etc/apt/sources.list
+# ADD sources.list /etc/apt/sources.list
 
 # zip: configure: WARNING: Libzip >= 1.2.0 needed for encryption support
 # see: https://stackoverflow.com/questions/48700453/docker-image-build-with-php-zip-extension-shows-bundled-libzip-is-deprecated-w
@@ -26,6 +27,24 @@ RUN apt-get update \
 
 # docker-php-ext-install mysqli
 # bcmath
+
+# oracle 链接见
+# https://www.oracle.com/database/technologies/instant-client/linux-x86-64-downloads.html
+# ENV LD_LIBRARY_PATH="/usr/local/instantclient"
+# RUN apt-get install -y zip libaio1 \
+#         && curl -O https://download.oracle.com/otn_software/linux/instantclient/19600/instantclient-basic-linux.x64-19.6.0.0.0dbru.zip \
+#         && curl -O https://download.oracle.com/otn_software/linux/instantclient/19600/instantclient-sqlplus-linux.x64-19.6.0.0.0dbru.zip \
+#         && curl -O https://download.oracle.com/otn_software/linux/instantclient/19600/instantclient-sdk-linux.x64-19.6.0.0.0dbru.zip \
+#         && unzip instantclient-basic-linux.x64-19.6.0.0.0dbru.zip -d /usr/local/ \
+#         && rm -rf instantclient-basic-linux.x64-19.6.0.0.0dbru.zip \
+#         && unzip instantclient-sqlplus-linux.x64-19.6.0.0.0dbru.zip -d /usr/local/ \
+#         && rm -rf instantclient-sqlplus-linux.x64-19.6.0.0.0dbru.zip \
+#         && unzip instantclient-sdk-linux.x64-19.6.0.0.0dbru.zip -d /usr/local/ \
+#         && rm -rf instantclient-sdk-linux.x64-19.6.0.0.0dbru.zip \
+#         && mv /usr/local/instantclient_19_6 /usr/local/instantclient \
+#         && ln -s /usr/local/instantclient/sqlplus /usr/bin/sqlplus \
+#         && docker-php-ext-configure oci8 --with-oci8=instantclient,/usr/local/instantclient \
+#         && docker-php-ext-install oci8 
 
 # composer
 ENV COMPOSER_ALLOW_SUPERUSER 1
