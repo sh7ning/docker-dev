@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+    shadowsocks:
+        image: shadowsocks/shadowsocks-libev
+        ports:
+            - "8388:8388"
+        environment:
+            - METHOD=aes-256-cfb
+            - PASSWORD=your-psw
+        restart: always
