@@ -21,3 +21,17 @@ docker network create jetea_net
 ```
 docker-compose up -d
 ```
+
+1. acme 证书申请
+* <https://letsencrypt.org/zh-cn/docs/client-options/>
+* 获取你的阿里云API Key: <https://ak-console.aliyun.com/#/accesskey>
+* [安装acme.sh](https://github.com/acmesh-official/acme.sh/wiki/%E8%AF%B4%E6%98%8E)
+* 设置环境变量
+```
+export Ali_Key="sdfsdfsdfljlbjkljlkjsdfoiwje"
+export Ali_Secret="jlsdflanljkljlfdsaklkjflsa"
+```
+* 申请正式
+```
+acme.sh --issue --dns dns_ali -d demo.com -d *.demo.com
+```
