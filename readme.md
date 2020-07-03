@@ -22,7 +22,7 @@ docker network create jetea_net
 docker-compose up -d
 ```
 
-1. acme 证书申请
+### acme https 证书申请
 * <https://letsencrypt.org/zh-cn/docs/client-options/>
 * 获取你的阿里云API Key: <https://ak-console.aliyun.com/#/accesskey>
 * [安装acme.sh](https://github.com/acmesh-official/acme.sh/wiki/%E8%AF%B4%E6%98%8E)
