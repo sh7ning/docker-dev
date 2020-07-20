@@ -11,7 +11,7 @@ services:
         volumes:
             - /etc/localtime:/etc/localtime:ro
             - ./runtime/gogs/data:/data
-            - ./favicon.ico:/app/gogs/public/img/favicon.png
+            - ./favicon.ico:/data/gogs/public/img/favicon.png
 
 networks:
     default:
