@@ -16,6 +16,18 @@ services:
         extra_hosts:
             - "git.demo.com:192.168.0.1"
 
+    flask:
+        image: docker-flask
+        build:
+            context: ./flask
+            dockerfile: Dockerfile
+        restart: always
+        ports:
+            - 5000:5000
+        volumes:
+            - ${FLASK_DIR}:/app
+        command: gunicorn app:app -c /etc/gunicorn.conf.py
+
     nginx:
         image: nginx:1.11
         restart: always
