@@ -7,6 +7,12 @@ filebeat.inputs:
           - /logs/lumen/*.log
       encoding: utf-8
       scan_frequency: 5s
+      backoff: 1s
+      close_inactive: 30m
+      json.add_error_key: true
+      clean_removed: true
+      ignore_older: 24h
+      clean_inactive: 25h
       tags: ["filebeat", "lumen_log", "jetea_app"]
       multiline.pattern: ^\[\d{4}
       multiline.negate: true
