@@ -37,6 +37,7 @@ acme.sh --issue --dns dns_ali -d demo.com -d *.demo.com
 ```
 
 * acme 定时更新证书
+> vim /data/acme_renew
 ```
 #!/bin/bash
 
@@ -56,4 +57,4 @@ echo 重启nginx
 echo 刷新证书完成
 ```
 
-> crontab: `57 0 * * * /data/certbot_renew >> /tmp/certbot_renew.log 2>&1`
+> crontab: `57 0 * * * /data/acme_renew >> /tmp/acme_renew.log 2>&1`
