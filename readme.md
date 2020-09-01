@@ -8,12 +8,6 @@
 docker network create jetea_net
 ```
 
-* crontab
-
-```
-0 0 1 * * /data/docker-dev/certbot_renew >> /tmp/certbot_renew.log 2>&1
-```
-
 ###  Usage
 
 * run
