@@ -35,3 +35,25 @@ export Ali_Secret="bbb"
 ```
 acme.sh --issue --dns dns_ali -d demo.com -d *.demo.com
 ```
+
+* acme 定时更新证书
+```
+#!/bin/bash
+
+echo 刷新证书 开始执行,时间: $(date +"%Y年%m月%d日 %H时%M分%S秒")
+
+"/root/.acme.sh"/acme.sh --cron --home "/root/.acme.sh" --force 
+
+echo 拷贝证书
+
+cp -rp /root/.acme.sh/demo.com /data/docker-dev/nginx/certs/
+cp -rp /root/.acme.sh/abc.net /data/docker-dev/nginx/certs/
+
+echo 重启nginx
+
+/usr/local/bin/docker-compose -f /data/docker-dev/docker-compose.yml restart nginx
+
+echo 刷新证书完成
+```
+
+> crontab: `57 0 * * * /data/certbot_renew >> /tmp/certbot_renew.log 2>&1`
