@@ -28,8 +28,8 @@ docker-compose up -d
 * [安装acme.sh](https://github.com/acmesh-official/acme.sh/wiki/%E8%AF%B4%E6%98%8E)
 * 设置环境变量
 ```
-export Ali_Key="sdfsdfsdfljlbjkljlkjsdfoiwje"
-export Ali_Secret="jlsdflanljkljlfdsaklkjflsa"
+export Ali_Key="aaa"
+export Ali_Secret="bbb"
 ```
 * 申请正式
 ```
