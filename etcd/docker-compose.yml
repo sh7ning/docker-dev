@@ -2,21 +2,46 @@ version: "3"
 
 services:
     etcd-01:
-        container_name: container-etcd
-        image: quay.io/coreos/etcd:v3.3.1
+        container_name: container-etcd-01
+        image: quay.io/coreos/etcd:v3.4.13
         environment:
             - ETCDCTL_API=3
         volumes:
             - ./runtime/etcd-01:/etcd-data
         command:  >-
             /usr/local/bin/etcd
-            --data-dir=/etcd-data
             -name etcd-01
-            -advertise-client-urls http://container-etcd:2379
+            --data-dir=/data
+            -advertise-client-urls http://container-etcd-01:2379
             -listen-client-urls http://0.0.0.0:2379
-            -initial-advertise-peer-urls http://container-etcd:2380
+            -initial-advertise-peer-urls http://container-etcd-01:2380
             -listen-peer-urls http://0.0.0.0:2380
-            -initial-cluster etcd-01=http://container-etcd:2380
+            -initial-cluster etcd-01=http://container-etcd-01:2380,etcd-02=http://container-etcd-02:2380
+            -initial-cluster-token node-cluster-token
+            -initial-cluster-state new
+            --force-new-cluster=false
+            -log-level info
+
+    etcd-02:
+        container_name: container-etcd-02
+        image: quay.io/coreos/etcd:v3.4.13
+        environment:
+            - ETCDCTL_API=3
+        volumes:
+            - ./runtime/etcd-02:/etcd-data
+        command:  >-
+            /usr/local/bin/etcd
+            -name etcd-02
+            --data-dir=/data
+            -advertise-client-urls http://container-etcd-02:2379
+            -listen-client-urls http://0.0.0.0:2379
+            -initial-advertise-peer-urls http://container-etcd-02:2380
+            -listen-peer-urls http://0.0.0.0:2380
+            -initial-cluster etcd-01=http://container-etcd-01:2380,etcd-02=http://container-etcd-02:2380
+            -initial-cluster-token node-cluster-token
+            -initial-cluster-state new
+            --force-new-cluster=false
+            -log-level info
 
 networks:
     default:
