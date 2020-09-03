@@ -7,7 +7,7 @@ services:
         environment:
             - ETCDCTL_API=3
         volumes:
-            - ./runtime/etcd-01:/etcd-data
+            - ./runtime/etcd-01:/data
         command:  >-
             /usr/local/bin/etcd
             -name etcd-01
@@ -20,6 +20,7 @@ services:
             -initial-cluster-token node-cluster-token
             -initial-cluster-state new
             --force-new-cluster=false
+            --logger=zap
             -log-level info
 
     etcd-02:
@@ -28,7 +29,7 @@ services:
         environment:
             - ETCDCTL_API=3
         volumes:
-            - ./runtime/etcd-02:/etcd-data
+            - ./runtime/etcd-02:/data
         command:  >-
             /usr/local/bin/etcd
             -name etcd-02
@@ -41,6 +42,7 @@ services:
             -initial-cluster-token node-cluster-token
             -initial-cluster-state new
             --force-new-cluster=false
+            --logger=zap
             -log-level info
 
 networks:
