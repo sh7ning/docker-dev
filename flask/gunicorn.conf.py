@@ -8,3 +8,4 @@ worker_class = "gevent" # 默认为阻塞模式，最好选择gevent模式
 loglevel = 'info'
 # accesslog=
 # errorlog=
+# capture_output=True
