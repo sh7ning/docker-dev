@@ -11,8 +11,11 @@ services:
             - INFLUXDB_DATA_MAX_SERIES_PER_DATABASE=0
             - INFLUXDB_DATA_MAX_VALUES_PER_TAG=0
             - INFLUXDB_HTTP_MAX_BODY_SIZE=0
+            - INFLUXDB_HTTP_AUTH_ENABLED=true
+            - INFLUXDB_ADMIN_USER=root
+            - INFLUXDB_ADMIN_PASSWORD=123123
         ports:
-            - "127.0.0.1:8086:8086" # HTTP API port
+            - "8086:8086" # HTTP API port
         volumes:
             - ../runtime/influxdb/data:/var/lib/influxdb
 
