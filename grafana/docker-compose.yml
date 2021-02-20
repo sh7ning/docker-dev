@@ -3,18 +3,19 @@ version: "3"
 services:
     # node-exporter dashboard: https://grafana.com/grafana/dashboards/8919
     grafana:
-        image: grafana/grafana:5.4.3
-        restart: always
-        user: "0"
-        ports:
-            - 127.0.0.1:3000:3000
-        environment:
-            - GF_INSTALL_PLUGINS=grafana-piechart-panel,grafana-simple-json-datasource
-            - TZ=Asia/Shanghai
-            - GF_SECURITY_ADMIN_USER=root
-            - GF_SECURITY_ADMIN_PASSWORD=123123
-        volumes:
-            - ../runtime/grafana/data:/var/lib/grafana
+      image: grafana/grafana:7.4.2
+      container_name: grafana
+      restart: always
+      user: "0"
+      ports:
+        - 127.0.0.1:3000:3000
+      environment:
+        - TZ=Asia/Shanghai
+        - GF_SECURITY_ADMIN_USER=root
+        - GF_SECURITY_ADMIN_PASSWORD=robot123123
+        - GF_INSTALL_PLUGINS=grafana-piechart-panel,grafana-simple-json-datasource
+      volumes:
+        - ../runtime/grafana/data:/var/lib/grafana
 
 networks:
     default:
