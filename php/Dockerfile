@@ -29,7 +29,7 @@ RUN apt-get update \
 COPY ./opcache.ini /usr/local/etc/php/conf.d/opcache.ini 
 
 # docker-php-ext-install mysqli
-# bcmath
+# apt-get install libmpdec-dev && pecl install decimal && docker-php-ext-enable decimal
 
 # oracle 链接见
 # https://www.oracle.com/database/technologies/instant-client/linux-x86-64-downloads.html
