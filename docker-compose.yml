@@ -16,18 +16,6 @@ services:
         extra_hosts:
             - "git.demo.com:192.168.0.1"
 
-    flask:
-        image: docker-flask
-        build:
-            context: ./flask
-            dockerfile: Dockerfile
-        restart: always
-        ports:
-            - 5000:5000
-        volumes:
-            - ${FLASK_DIR}:/app
-        command: gunicorn app:app -c /etc/gunicorn.conf.py
-
     nginx:
         image: nginx:1.11
         restart: always
@@ -41,15 +29,6 @@ services:
             - ./nginx/conf.d:/etc/nginx/conf.d:ro
         depends_on:
             - php
-
-    redis:
-        image: redis:4.0-stretch
-        container_name: container-redis
-        restart: always
-        volumes:
-            - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
-        ports:
-            - "127.0.0.1:6379:6379"
 
 networks:
     default:

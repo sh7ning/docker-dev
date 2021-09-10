@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+    flask:
+        image: docker-flask
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        restart: always
+        ports:
+            - 5000:5000
+        volumes:
+            - ${FLASK_DIR}:/app
+        command: gunicorn app:app -c /etc/gunicorn.conf.py
+
+networks:
+    default:
+        external:
+            name: jetea_net

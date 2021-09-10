@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+    redis:
+        image: redis:4.0-stretch
+        container_name: container-redis
+        restart: always
+        command: redis-server --requirepass 123123 --appendonly no --save ""
+        ports:
+            - "127.0.0.1:6379:6379"
+
+networks:
+    default:
+        external:
+            name: jetea_net
