@@ -20,6 +20,8 @@ docker-compose up -d
 * <https://letsencrypt.org/zh-cn/docs/client-options/>
 * 获取你的阿里云API Key: <https://ak-console.aliyun.com/#/accesskey>
 * [安装acme.sh](https://github.com/acmesh-official/acme.sh/wiki/%E8%AF%B4%E6%98%8E)
+* 参考文档1：https://github.com/acmesh-official/acme.sh/wiki/dnsapi#11-use-aliyun-domain-api-to-automatically-issue-cert
+* 参考文档2：https://github.com/acmesh-official/acme.sh/wiki/%E8%AF%B4%E6%98%8E#2-%E6%89%8B%E5%8A%A8-dns-%E6%96%B9%E5%BC%8F-%E6%89%8B%E5%8A%A8%E5%9C%A8%E5%9F%9F%E5%90%8D%E4%B8%8A%E6%B7%BB%E5%8A%A0%E4%B8%80%E6%9D%A1-txt-%E8%A7%A3%E6%9E%90%E8%AE%B0%E5%BD%95-%E9%AA%8C%E8%AF%81%E5%9F%9F%E5%90%8D%E6%89%80%E6%9C%89%E6%9D%83
 * 设置环境变量
 ```
 export Ali_Key="aaa"
