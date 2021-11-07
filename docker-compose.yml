@@ -23,8 +23,7 @@ services:
             - 80:80
             - 443:443
         volumes:
-            - ${SITE_DIR}:/www
-            - ./nginx/.well-known:/www/.well-known
+            - ${SITE_DIR}:/data/sites
             - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
             - ./nginx/conf.d:/etc/nginx/conf.d:ro
         depends_on:
