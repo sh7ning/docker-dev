@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+
+set -- /usr/local/bin/docker-compose -f /Users/shine/workspace/docker-dev/docker-compose.yml exec php php "$@"
+
+exec "$@"
+
